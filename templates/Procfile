@@ -1,0 +1,1 @@
+web : gunicorn mycrudproject.wsgi --log-file -

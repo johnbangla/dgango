@@ -1,0 +1,80 @@
+
+
+{% extends 'base.html'	%}
+{% load static %}
+
+
+
+{% block body %}
+
+<div class="jumbotron">
+  <h1 class="display-4">Show Alll recoords</h1>
+  <p class="lead">This is all records</p>
+  <hr class="my-4">
+  <p>
+  <table class="table table-borderless table-dark">
+  <thead>
+    <tr>
+    
+      <th scope="col">Name</th>
+      <th scope="col">Contact</th>
+
+        <th scope="col">
+         <a href="{% url 'emp_insert'  %}" class="btn btn-primary btn-md" role="button"> 
+           Add New
+            </a> 
+        </th>
+
+    </tr>
+  </thead>
+  <tbody>
+  {% for emp in emp_list %}
+      <tr>
+       
+      <td>{{ emp.fullName }}</td>
+      <td>{{ emp.mobile_Number }}</td>
+      
+    
+      <td>
+      <div class="row">
+        <div class="col">
+            <a href="{% url 'emp_update' emp.id %}" class="btn text-secondary px-0"> 
+            <i class="{% static 'fas fa-edit' %}%">Edit</i>
+            </a> 
+        </div>
+  <div class="col">
+            <form action="{% url 'emp_delete' emp.id %}" method="post">
+             {% csrf_token %}
+              <button type="submit" class="btn">
+             <i class="fas fa-trash-alt">Delete</i>
+              </button>
+           
+            </from>  
+    </div>
+ <div class="col">
+ <a href="{% url 'emp_details' emp.id %}" class="btn text-secondary px-0"> 
+            <i class="{% static 'fas fa-edit' %}%">Details</i>
+            </a> 
+ </div>
+   
+
+
+</div>
+      </td>
+      </tr>
+    {% endfor  %}
+  </tbody>
+</table>
+  
+  </p>
+
+</div>
+
+
+
+
+
+
+
+
+{% endblock %}

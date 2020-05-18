@@ -1,0 +1,71 @@
+
+
+{% extends 'base.html'	%}
+{% load static %}
+
+
+
+{% block body %}
+
+<div class="jumbotron">
+  <h1 class="display-4">Details recoords</h1>
+  <p class="lead">Details recoords</p>
+  <hr class="my-4">
+  <p>
+  <table class="table table-borderless table-dark">
+  <thead>
+    <tr>
+      <th scope="col">Code</th>
+      <th scope="col">Name</th>
+      <th scope="col">Contact</th>
+      <th scope="col">Position</th>
+
+        <th scope="col">
+         <a href="{% url 'emp_insert'  %}" class="btn btn-primary btn-md" role="button"> 
+           Add New
+            </a> 
+        </th>
+
+    </tr>
+  </thead>
+  <tbody>
+
+      <tr>
+      <td>{{ employee.emp_Code }}</td>
+      <td>{{ employee.fullName }}</td>
+      <td>{{ employee.mobile_Number }}</td>
+      <td>{{ employee.position_Employee }}</td>
+     
+      
+    
+      <td>
+      <div class="row">
+      
+  <div class="col">
+            <a href="{% url 'emp_delete' employee.id %}" class="btn btn-primary btn-sm" role="button">Delete</a>
+    </div>
+  <div class="col">
+           <a href="{% url 'emp_update' employee.id %}" class="btn btn-primary btn-sm" role="button">edit</a> 
+    </div>
+   
+
+
+</div>
+      </td>
+      </tr>
+ 
+  </tbody>
+</table>
+  
+  </p>
+
+</div>
+
+
+
+
+
+
+
+
+{% endblock %}
